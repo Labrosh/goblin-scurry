@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnh01n8262wak"]
+
+[ext_resource type="Script" uid="uid://wv4uo8l3vfif" path="res://idle_gobbo.gd" id="1_mahnq"]
+[ext_resource type="Texture2D" uid="uid://c318q63x0d5gx" path="res://Gobbo.png" id="2_yo1qa"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_867aj"]
+radius = 11.1803
+
+[node name="IdleGobbo" type="Area2D"]
+script = ExtResource("1_mahnq")
+
+[node name="Gobbo" type="Sprite2D" parent="."]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_yo1qa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_867aj")
