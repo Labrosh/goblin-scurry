@@ -1,93 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://bu5rxxija7eoa"]
+[gd_scene load_steps=6 format=3 uid="uid://dgipn13v3gsdc"]
 
-[ext_resource type="Texture2D" uid="uid://c318q63x0d5gx" path="res://Gobbo.png" id="1_0xm2m"]
-[ext_resource type="Script" uid="uid://ddmrhxctf1cff" path="res://goblin.gd" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://dwvsu3ry6rjbf" path="res://gobbo.tscn" id="1_0xm2m"]
+[ext_resource type="Script" uid="uid://ddultqpdl5lww" path="res://main.gd" id="1_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://bu5rxxija7eoa" path="res://UI.tscn" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://dttl71cwe4dp2" path="res://coin.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://cnh01n8262wak" path="res://idle_gobbo.tscn" id="5_lquwl"]
 
-[node name="Main" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Main" type="Node2D"]
+script = ExtResource("1_1bvp3")
 
-[node name="Goblin" type="TextureRect" parent="." node_paths=PackedStringArray("gold_label", "gps_label", "goblin_quote", "button_pockets", "button_feet", "button_wagon")]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -16.0
-offset_top = -16.0
-offset_right = 16.0
-offset_bottom = 16.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("1_0xm2m")
-script = ExtResource("1_ig7tw")
-gold_label = NodePath("../UI/VBoxContainer2/GoldLabel")
-gps_label = NodePath("../UI/VBoxContainer2/GPSLabel")
-goblin_quote = NodePath("GoblinQuote")
-button_pockets = NodePath("../UI/VBoxContainer/Button_Pockets")
-button_feet = NodePath("../UI/VBoxContainer/Button_Feet")
-button_wagon = NodePath("../UI/VBoxContainer/Button_Wagon")
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="GoblinQuote" type="Label" parent="Goblin"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_top = -20.0
-offset_bottom = 3.0
-grow_horizontal = 2
+[node name="UI" parent="CanvasLayer" instance=ExtResource("2_h2yge")]
+offset_left = -1.0
+offset_top = -2.0
+offset_right = -1.0
+offset_bottom = -2.0
 
-[node name="UI" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="GobboSprite" parent="." node_paths=PackedStringArray("coin") instance=ExtResource("1_0xm2m")]
+position = Vector2(572, 309)
+coin = NodePath("../CoinSprite")
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="UI"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 50.0
-grow_horizontal = 2
+[node name="CoinSprite" parent="." instance=ExtResource("3_h2yge")]
+position = Vector2(875, 354)
 
-[node name="GoldLabel" type="Label" parent="UI/VBoxContainer2"]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "Gold:"
-
-[node name="GPSLabel" type="Label" parent="UI/VBoxContainer2"]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "Gold per second:"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -4.0
-offset_top = -32.0
-offset_right = 4.0
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="Button_Pockets" type="Button" parent="UI/VBoxContainer"]
-layout_mode = 2
-text = "Buy Pockets Upgrade"
-
-[node name="Button_Feet" type="Button" parent="UI/VBoxContainer"]
-layout_mode = 2
-text = "Buy Feet Upgrade"
-
-[node name="Button_Wagon" type="Button" parent="UI/VBoxContainer"]
-layout_mode = 2
-text = "Buy Wagon Upgrade"
+[node name="IdleGobbo" parent="." instance=ExtResource("5_lquwl")]
+position = Vector2(571, 457)

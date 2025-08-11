@@ -11,6 +11,10 @@ config_version=5
 [application]
 
 config/name="goblin"
-run/main_scene="uid://bu5rxxija7eoa"
+run/main_scene="uid://dgipn13v3gsdc"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0

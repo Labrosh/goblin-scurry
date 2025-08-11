@@ -1,0 +1,94 @@
+[gd_scene load_steps=3 format=3 uid="uid://bu5rxxija7eoa"]
+
+[ext_resource type="Texture2D" uid="uid://c318q63x0d5gx" path="res://Gobbo.png" id="1_3b2b5"]
+[ext_resource type="Script" uid="uid://ddmrhxctf1cff" path="res://goblin.gd" id="2_g6l6n"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Goblin" type="TextureRect" parent="." node_paths=PackedStringArray("gold_label", "gps_label", "goblin_quote", "button_pockets", "button_feet", "button_wagon")]
+visible = false
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = 149.0
+offset_right = 16.0
+offset_bottom = 181.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_3b2b5")
+script = ExtResource("2_g6l6n")
+gold_label = NodePath("../UI/VBoxContainer2/GoldLabel")
+gps_label = NodePath("../UI/VBoxContainer2/GPSLabel")
+goblin_quote = NodePath("GoblinQuote")
+button_pockets = NodePath("../UI/VBoxContainer/Button_Pockets")
+button_feet = NodePath("../UI/VBoxContainer/Button_Feet")
+button_wagon = NodePath("../UI/VBoxContainer/Button_Wagon")
+
+[node name="GoblinQuote" type="Label" parent="Goblin"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = -20.0
+offset_bottom = 3.0
+grow_horizontal = 2
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 50.0
+grow_horizontal = 2
+
+[node name="GoldLabel" type="Label" parent="UI/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Gold:"
+
+[node name="GPSLabel" type="Label" parent="UI/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Gold per second:"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -32.0
+offset_right = 4.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Button_Pockets" type="Button" parent="UI/VBoxContainer"]
+layout_mode = 2
+text = "Buy Pockets Upgrade"
+
+[node name="Button_Feet" type="Button" parent="UI/VBoxContainer"]
+layout_mode = 2
+text = "Buy Feet Upgrade"
+
+[node name="Button_Wagon" type="Button" parent="UI/VBoxContainer"]
+layout_mode = 2
+text = "Buy Wagon Upgrade"
